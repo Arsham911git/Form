@@ -3,7 +3,7 @@ const serverData = await fetch('http://localhost:3000/applications', {
 });
 const data = await serverData.json();
 data.forEach(participant => {
-    if (participant.hobbies == undefined) {
+    if (participant.hobbies === undefined) {
         participant.hobbies = "нет";
     }
     const tableData = document.createElement('tr');
