@@ -67,7 +67,7 @@ function validateForm() {
         genderErr = false;
     }
 
-    if ((nameErr || emailErr || mobileErr || countryErr || genderErr) == true) {
+    if ((nameErr || emailErr || mobileErr || countryErr || genderErr) === true) {
         return false;
     } else {
         let dataPreview = "Ваша заявка принята: \n" +
