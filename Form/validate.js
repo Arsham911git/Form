@@ -67,7 +67,7 @@ function validateForm() {
         genderErr = false;
     }
 
-    (nameErr || emailErr || mobileErr || countryErr || genderErr)?false:
+    return(nameErr || emailErr || mobileErr || countryErr || genderErr)?false:
         alert(
             `Ваша заявка принята:
             Имя:  ${name}
