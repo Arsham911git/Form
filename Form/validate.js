@@ -1,27 +1,24 @@
+const MOBILE = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+const NAME = /^[а-яa-z]+$/iu;
+const EMAIL = /^\S+@\S+\.\S+$/;
+
 function printError(elemId, hintMsg) {
     document.getElementById(elemId).innerHTML = hintMsg;
 }
-function validateForm() {
-    let name = document.contactForm.name.value;
-    let email = document.contactForm.email.value;
-    let mobile = document.contactForm.mobile.value;
-    let country = document.contactForm.country.value;
-    let gender = document.contactForm.gender.value;
-    let hobbies = [];
-    let checkboxes = document.getElementsByName("hobbies");
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            hobbies.push(checkboxes[i].value);
-        }
-    }
 
+function validateForm() {
+    const name = document.querySelector('input[name=name]').value;
+    const email = document.querySelector('input[name=email]').value;
+    const mobile = document.querySelector('input[name=mobile]').value;
+    const country = document.contactForm.country.value;
+    const gender = document.contactForm.gender.value;
+    const hobbies = Array.from(document.querySelectorAll("input[name='type']:checked")).map((elem) => elem.value)
     let nameErr = emailErr = mobileErr = countryErr = genderErr = true;
 
     if (name == "") {
         printError("nameErr", "Введите имя");
     } else {
-        let regex = /^[а-яa-z]+$/iu;
-        if (regex.test(name) === false) {
+        if (NAME.test(name) === false) {
             printError("nameErr", "Введите имя корректно");
         } else {
             printError("nameErr", "");
@@ -32,8 +29,7 @@ function validateForm() {
     if (email == "") {
         printError("emailErr", "Введите Email");
     } else {
-        let regex = /^\S+@\S+\.\S+$/;
-        if (regex.test(email) === false) {
+        if (EMAIL.test(email) === false) {
             printError("emailErr", "Введите Email корректно");
         } else {
             printError("emailErr", "");
@@ -44,8 +40,7 @@ function validateForm() {
     if (mobile == "") {
         printError("mobileErr", "Введите номер телефона");
     } else {
-        let regex = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-        if (regex.test(mobile) === false) {
+        if (MOBILE.test(mobile) === false) {
             printError("mobileErr", "Введите номер телефона корректно");
         } else {
             printError("mobileErr", "");
@@ -66,16 +61,5 @@ function validateForm() {
         printError("genderErr", "");
         genderErr = false;
     }
-
-    return(nameErr || emailErr || mobileErr || countryErr || genderErr)?false:
-        alert(
-            `Ваша заявка принята:
-            Имя:  ${name}
-            Email:  ${email}
-            Телефон:  ${mobile}
-            Страна:  ${country}
-            Пол:  ${gender}
-            Хобби: ${hobbies.length?hobbies:`нет`}`
-        );
-        window.location.reload();
+    return (nameErr || emailErr || mobileErr || countryErr || genderErr) ? false : true;
 };
