@@ -78,5 +78,4 @@ function validateForm() {
             Хобби: ${hobbies.length?hobbies:`нет`}`
         );
         window.location.reload();
-    }
 };
