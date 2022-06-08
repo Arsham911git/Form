@@ -70,18 +70,15 @@ function validateForm() {
     if ((nameErr || emailErr || mobileErr || countryErr || genderErr) === true) {
         return false;
     } else {
-        let dataPreview = "Ваша заявка принята: \n" +
-            "Имя: " + name + "\n" +
-            "Email: " + email + "\n" +
-            "Телефон: " + mobile + "\n" +
-            "Страна: " + country + "\n" +
-            "Пол: " + gender + "\n";
-        if (hobbies.length) {
-            dataPreview += "Хобби: " + hobbies.join(", ");
-        } else {
-            dataPreview += "Хобби: нет";
-        }
-        alert(dataPreview);
+        alert(
+            `Ваша заявка принята:
+            Имя:  ${name}
+            Email:  ${email}
+            Телефон:  ${mobile}
+            Страна:  ${country}
+            Пол:  ${gender}
+            Хобби: ${hobbies.length?hobbies:`нет`}`
+        );
         window.location.reload();
     }
 };
