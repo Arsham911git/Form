@@ -6,18 +6,19 @@
     <title>Заявка</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script defer src="send.js"></script>
     <script defer rel="script" src="./validate.js"></script>
     <script type="module" src="data.js"></script>
     <link rel="stylesheet" href="./form-style.css">
 </head>
 
 <body>
-    <form target="_blank" name="contactForm" onsubmit="return validateForm()" action="http://localhost:3000/applications" method="post">
+    <form target="_blank" name="contactForm" onsubmit="return validateForm()" action="#">
         <h2>Заявка</h2>
         <div class="row">
             <label>Имя</label>
             <input type="text" name="name" placeholder="имя без фамилии">
-            <div class="error" id="nameErr"></div>
+            <div class="error" id="nameErr"><div class="error" id="nameErr"></div></div>
         </div>
         <div class="row">
             <label>Email</label>
@@ -58,9 +59,10 @@
             </div>
         </div>
         <div class="row">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Отправить">
         </div>
     </form>
+    <button class="button" onclick="window.location.reload();">Обновить</button>
     <table class="table table-striped">
         <thead>
             <tr class="bg-info">
