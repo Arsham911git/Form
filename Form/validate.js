@@ -1,65 +1,66 @@
 const MOBILE = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-const NAME = /^[а-яa-z]+$/iu;
 const EMAIL = /^\S+@\S+\.\S+$/;
+const requiredFields = ['name', 'email', 'mobile', 'gender'];
+const textFields = ['name', 'email', 'mobile'];
+const inputs = Array.from(document.querySelectorAll('.forma input'));
 
-function printError(elemId, hintMsg) {
-    document.getElementById(elemId).innerHTML = hintMsg;
-}
+window.addEventListener('load', () => {
+    inputs.filter(input => textFields.includes(input.name))
+        .forEach(input => input.pattern = '^[А-Я][а-я]{2,}$');
 
-function validateForm() {
-    const name = document.querySelector('input[name=name]').value;
-    const email = document.querySelector('input[name=email]').value;
-    const mobile = document.querySelector('input[name=mobile]').value;
-    const country = document.contactForm.country.value;
-    const gender = document.contactForm.gender.value;
-    const hobbies = Array.from(document.querySelectorAll("input[name='type']:checked")).map((elem) => elem.value)
-    let nameErr = emailErr = mobileErr = countryErr = genderErr = true;
+    inputs.filter(input => requiredFields.includes(input.name))
+        .forEach(input => input.required = true);
+    const errors = {}
 
-    if (name == "") {
-        printError("nameErr", "Введите имя");
-    } else {
-        if (NAME.test(name) === false) {
-            printError("nameErr", "Введите имя корректно");
+    inputs.filter(input => textFields.includes(input.name))
+        .forEach(input => input.addEventListener('input', () => {
+
+            const name = RegExp(input.pattern).test(input.value);
+            const inputErorr = errors[input.name];
+            if (name == false) {
+                Error(input, "Заполните имя правильно");
+            } else {
+                inputErorr?.remove();
+                errors[input.name] = null;
+            }
+        }));
+
+    const phone = document.querySelector('input[name=phone]');
+    phone.pattern = MOBILE.source;
+    phone.addEventListener('input', () => {
+        const inputErorr = errors[phone.name];
+        if (!phone.value.match(RegExp(phone.pattern))) {
+            phone.classList.add('invalid-input');
+            Error(phone, "Введите номер телефона правильно");
         } else {
-            printError("nameErr", "");
-            nameErr = false;
+            phone.classList.remove('invalid-input');
+            inputErorr?.remove();
+            errors[phone.name] = null;
         }
-    }
+    });
 
-    if (email == "") {
-        printError("emailErr", "Введите Email");
-    } else {
-        if (EMAIL.test(email) === false) {
-            printError("emailErr", "Введите Email корректно");
+    const mail = document.querySelector('input[name=email]');
+    mail.pattern = EMAIL.source;
+    mail.addEventListener('input', () => {
+        const inputErorr = errors[mail.name];
+        if (!mail.value.match(RegExp(mail.pattern))) {
+            mail.classList.add('invalid-input');
+            Error(mail, "Введите email правильно");
         } else {
-            printError("emailErr", "");
-            emailErr = false;
+            mail.classList.remove('invalid-input');
+            inputErorr?.remove();
+            errors[mail.name] = null;
         }
-    }
+    });
 
-    if (mobile == "") {
-        printError("mobileErr", "Введите номер телефона");
-    } else {
-        if (MOBILE.test(mobile) === false) {
-            printError("mobileErr", "Введите номер телефона корректно");
-        } else {
-            printError("mobileErr", "");
-            mobileErr = false;
-        }
-    }
+    function Error(input, text) {
+        const errorElement = errors[input.name] ?? document.createElement('p');
+        errorElement.innerText = text;
 
-    if (country == "Select") {
-        printError("countryErr", "Выберите вашу страну");
-    } else {
-        printError("countryErr", "");
-        countryErr = false;
-    }
+        if (errors[input.name]) return;
 
-    if (gender == "") {
-        printError("genderErr", "Выберите ваш пол");
-    } else {
-        printError("genderErr", "");
-        genderErr = false;
+        errorElement.classList.add('input-error');
+        input.parentNode.appendChild(errorElement);
+        errors[input.name] = errorElement;
     }
-    return (nameErr || emailErr || mobileErr || countryErr || genderErr) ? false : true;
-};
+});
