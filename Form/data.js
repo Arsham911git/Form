@@ -10,7 +10,7 @@ serverData.forEach(participant => {
     tableData.innerHTML =
                 `<td>${participant.name}</td>
                 <td>${participant.email}</td>
-                <td>${participant.mobile}</td>
+                <td>${participant.phone}</td>
                 <td>${participant.country}</td>
                 <td>${participant.gender}</td>
                 <td>${participant.hobbies}</td>`
