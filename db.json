@@ -1,32 +1,65 @@
 {
   "applications": [
     {
-      "name": "Артур",
-      "email": "artur@gmail.com",
-      "mobile": "89993163214",
-      "country": "Россия",
-      "gender": "мужчина",
-      "hobbies": "спорт",
+      "name": [
+        "Артур"
+      ],
+      "email": [
+        "a.r.shamsutdinov@gmail.com"
+      ],
+      "phone": [
+        "89143163214"
+      ],
+      "country": [
+        "Россия"
+      ],
+      "gender": [
+        "мужчина"
+      ],
+      "hobbies": [
+        "спорт",
+        "фильмы",
+        "музыка"
+      ],
       "id": 1
     },
     {
-      "name": "Максим",
-      "email": "ez@s.com",
-      "mobile": "+79999999999",
-      "country": "Россия",
-      "gender": "мужчина",
+      "name": [
+        "Стас"
+      ],
+      "email": [
+        "stasdavidov911@gmail.com"
+      ],
+      "phone": [
+        "89143163214"
+      ],
+      "country": [
+        "Россия"
+      ],
+      "gender": [
+        "мужчина"
+      ],
       "hobbies": [
-        "фильмы",
-        "музыка"
+        "фильмы"
       ],
       "id": 2
     },
     {
-      "name": "Стас",
-      "email": "stasdavidov911@gmail.com",
-      "mobile": "89243363214",
-      "country": "США",
-      "gender": "мужчина",
+      "name": [
+        "Аня"
+      ],
+      "email": [
+        "dov911@gmail.com"
+      ],
+      "phone": [
+        "89143163214"
+      ],
+      "country": [
+        "США"
+      ],
+      "gender": [
+        "женщина"
+      ],
       "id": 3
     }
   ]
