@@ -1,4 +1,3 @@
-
 function getFormData(form) {
     const formData = new FormData(form);
     const res = {
@@ -18,22 +17,18 @@ function useXmlHttpRequest(data) {
         alert(`Ваша заявка принята:
         ${data.name}
         ${data.email}
-        ${data.mobile}
+        ${data.phone}
         ${data.country}
         ${data.gender}
         ${data.hobbies}`);
         window.location.reload();
     }
 }
-
 window.addEventListener('load', () => {
-    const contactForm = document.forms.contactForm;
-    contactForm.addEventListener('submit', (event) => {
-        if (validateForm()) {
-            event.preventDefault();
-            const data = getFormData(document.forms.contactForm);
-            useXmlHttpRequest(data);
-        }
-
+    const applicantForm = document.forms.aplicantForm;
+    applicantForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = getFormData(document.forms.aplicantForm);
+        useXmlHttpRequest(data);        
     })
 });
