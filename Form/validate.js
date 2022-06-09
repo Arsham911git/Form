@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
             const name = RegExp(input.pattern).test(input.value);
             const inputErorr = errors[input.name];
             if (name == false) {
-                Error(input, "Заполните имя правильно");
+                error(input, "Заполните имя правильно");
             } else {
                 inputErorr?.remove();
                 errors[input.name] = null;
@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
         const inputErorr = errors[phone.name];
         if (!phone.value.match(RegExp(phone.pattern))) {
             phone.classList.add('invalid-input');
-            Error(phone, "Введите номер телефона правильно");
+            error(phone, "Введите номер телефона правильно");
         } else {
             phone.classList.remove('invalid-input');
             inputErorr?.remove();
@@ -45,7 +45,7 @@ window.addEventListener('load', () => {
         const inputErorr = errors[mail.name];
         if (!mail.value.match(RegExp(mail.pattern))) {
             mail.classList.add('invalid-input');
-            Error(mail, "Введите email правильно");
+            error(mail, "Введите email правильно");
         } else {
             mail.classList.remove('invalid-input');
             inputErorr?.remove();
@@ -53,7 +53,7 @@ window.addEventListener('load', () => {
         }
     });
 
-    function Error(input, text) {
+    function error(input, text) {
         const errorElement = errors[input.name] ?? document.createElement('p');
         errorElement.innerText = text;
 
