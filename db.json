@@ -1,0 +1,66 @@
+{
+  "applications": [
+    {
+      "name": [
+        "Артур"
+      ],
+      "email": [
+        "a.r.shamsutdinov@gmail.com"
+      ],
+      "phone": [
+        "89143163214"
+      ],
+      "country": [
+        "Россия"
+      ],
+      "gender": [
+        "мужчина"
+      ],
+      "hobbies": [
+        "спорт",
+        "фильмы",
+        "музыка"
+      ],
+      "id": 1
+    },
+    {
+      "name": [
+        "Стас"
+      ],
+      "email": [
+        "stasdavidov911@gmail.com"
+      ],
+      "phone": [
+        "89143163214"
+      ],
+      "country": [
+        "Россия"
+      ],
+      "gender": [
+        "мужчина"
+      ],
+      "hobbies": [
+        "фильмы"
+      ],
+      "id": 2
+    },
+    {
+      "name": [
+        "Аня"
+      ],
+      "email": [
+        "dov911@gmail.com"
+      ],
+      "phone": [
+        "89143163214"
+      ],
+      "country": [
+        "США"
+      ],
+      "gender": [
+        "женщина"
+      ],
+      "id": 3
+    }
+  ]
+}
